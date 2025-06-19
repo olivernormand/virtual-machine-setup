@@ -1,0 +1,55 @@
+[project]
+name = "virtual-machine-setup"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+
+dependencies = [
+    "dotenv>=0.9.9",
+    "fuzzywuzzy>=0.18.0",
+    "httpx>=0.28.1",
+    "inspect-ai>=0.3.99",
+    "instructor>=1.7.9",
+    "markdownify>=1.1.0",
+    "openai>=1.75.0",
+    "pandas>=2.2.3",
+    "pyarrow>=20.0.0",
+    "pydantic>=2.11.3",
+    "python-levenshtein>=0.27.1",
+    "rapidfuzz>=3.13.0",
+    "setuptools>=79.0.0",
+    "tenacity>=9.1.2",
+    "xmltodict>=0.14.2",
+]
+requires-python = "==3.10.17"
+
+[dependency-groups]
+dev = [
+    "ipykernel>=6.29.5",
+    "ipywidgets>=8.1.6",
+]
+graphics = [
+    "matplotlib>=3.10.3",
+    "plotly>=6.1.2",
+    "seaborn>=0.13.2",
+]
+reinforcement-learning = [
+    "setuptools>=79.0.1",
+    "torch>=2.6.0",
+    "unsloth>=2025.6.1",
+    "vllm>=0.8.5.post1",
+    "wandb>=0.20.1",
+]
+
+[[tool.uv.index]]
+name = "pytorch-cu124"
+url = "https://download.pytorch.org/whl/cu124"
+explicit = true
+
+[tool.uv.sources]
+torch = [
+  { index = "pytorch-cu124" },
+]
+torchvision = [
+  { index = "pytorch-cu124" },
+]
