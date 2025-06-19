@@ -55,7 +55,7 @@ docker run --rm --gpus all -p 8000:8000 vllm/vllm-openai:v0.8.5
 
 Ensure the logs show that vLLM has detected the cuda runtime.
 
-#### - Core Analysis Environment
+#### Core Analysis Environment
 
 A core analysis environment should be setup with python. We don't currently know how we can get patient data to talk to code but iteration of this step will be much faster if there is a basic environment setup locally within the VM. Install the core analysis packages below into a virtual environment using `uv` within WSL.
 
@@ -64,7 +64,7 @@ pip install uv
 uv sync --al-groups
 ```
 
-This will spin up a core environment you can run. Let's verify this runs by running an UnSloth script. This is taken from an online notebook and has been shown to run on a Linux VM. Run this using `uv run medguard/reinforcement_learning/example_script.py`. We'll see lots of outputs saying that we've connected to CUDA, and ultimately the training loop will kick off. We'll begin to see individual rewards as well.
+This will spin up a core environment you can run. Let's verify this runs by running an UnSloth script. This is taken from an online notebook and has been shown to run on a Linux VM. Run this using `uv run example_script.py`. We'll see lots of outputs saying that we've connected to CUDA, and ultimately the training loop will kick off. We'll begin to see individual rewards as well.
 
 ### 2 - Downloaded model weights
 We can't access external Language Model APIs within the VM. We therefore require model weights to be downloaded to the VM so we can use vLLM to load and run the model there.
