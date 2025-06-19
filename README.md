@@ -80,3 +80,21 @@ Initially we require the following models to be downloaded:
 6. [MedGemma 27b](google/medgemma-27b-text-it) - leading medical model, identical size to above
 
 It's recommended to download these with the Huggingface CLI. See the documetation [here](https://huggingface.co/docs/huggingface_hub/en/guides/cli).
+
+### 3 - Upload files to the VM
+
+To balance iteration speed with security of the environment, we will require an ability to upload files to the VM so that we can develop locally and install the required dependencies to a docker image before uploading this image to the VM for analysis. These uploads will include:
+
+1. Drug profile and drug interaction datasets that are used to augment the patient data
+2. Docker images used to perform analysis locally in the VM on patient data
+3. Further models from Huggingface.
+
+We don't have a preference on how we upload files. There are generally four approaches:
+
+- SCP/SFTP through the same SSH bastion.
+- Azure Storage Blob mounted in the VM with azcopy.
+- Private ACR/ECR push/pull for large Docker layers.
+- Drag and Drop using Azure Bastion.
+
+To reiterate, an ability to upload files into the environment is essential for our evaluation. It will never require us to transfer information in the other direction.
+
