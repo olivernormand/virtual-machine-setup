@@ -55,13 +55,26 @@ docker run --rm --gpus all -p 8000:8000 vllm/vllm-openai:v0.8.5
 
 Ensure the logs show that vLLM has detected the cuda runtime.
 
-### 2 - Core Analysis Environment
+#### - Core Analysis Environment
 
 A core analysis environment should be setup with python. We don't currently know how we can get patient data to talk to code but iteration of this step will be much faster if there is a basic environment setup locally within the VM. Install the core analysis packages below into a virtual environment using `uv` within WSL.
 
 ```bash
-curl -LsSf https://astral.sh/uv/install.sh | sh
-uv sync
+pip install uv
+uv sync --al-groups
 ```
 
-This will spin up a core environment you can run. Let's verify this runs by using a combinat
+This will spin up a core environment you can run. Let's verify this runs by running an UnSloth script. This is taken from an online notebook and has been shown to run on a Linux VM. Run this using `uv run medguard/reinforcement_learning/example_script.py`. We'll see lots of outputs saying that we've connected to CUDA, and ultimately the training loop will kick off. We'll begin to see individual rewards as well.
+
+### 2 - Downloaded model weights
+We can't access external Language Model APIs within the VM. We therefore require model weights to be downloaded to the VM so we can use vLLM to load and run the model there.
+
+Initially we require the following models to be downloaded:
+1. [Llama-3.1-8b-Instruct](https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct) - for rapid experimentation using a lightweight model.
+2. [Llama-3.3-70b-Instruct](https://huggingface.co/meta-llama/Llama-3.3-70B-Instruct) - larger model for genuine output
+3. [Llama-3.3-Nemotron-49b](https://huggingface.co/nvidia/Llama-3_3-Nemotron-Super-49B-v1) - reasoning model with leading open source performance
+4. [Qwen3-32B](https://huggingface.co/Qwen/Qwen3-32B) - small reasoning model
+5. [Gemma3 27b](google/gemma-3-27b-it) - leading smaller model
+6. [MedGemma 27b](google/medgemma-27b-text-it) - leading medical model, identical size to above
+
+It's recommended to download these with the Huggingface CLI. See the documetation [here](https://huggingface.co/docs/huggingface_hub/en/guides/cli).
