@@ -77,8 +77,8 @@ Initially we require the following models to be downloaded:
 2. [Llama-3.3-70b-Instruct](https://huggingface.co/meta-llama/Llama-3.3-70B-Instruct) - larger model for genuine output
 3. [Llama-3.3-Nemotron-49b](https://huggingface.co/nvidia/Llama-3_3-Nemotron-Super-49B-v1) - reasoning model with leading open source performance
 4. [Qwen3-32B](https://huggingface.co/Qwen/Qwen3-32B) - small reasoning model
-5. [Gemma3 27b](google/gemma-3-27b-it) - leading smaller model
-6. [MedGemma 27b](google/medgemma-27b-text-it) - leading medical model, identical size to above
+5. [Gemma3 27b](https://huggingface.co/google/gemma-3-27b-it) - leading smaller model
+6. [MedGemma 27b](https://huggingface.co/google/medgemma-27b-text-it) - leading medical model, identical size to above
 
 It's recommended to download these with the Huggingface CLI. See the documetation [here](https://huggingface.co/docs/huggingface_hub/en/guides/cli).
 
