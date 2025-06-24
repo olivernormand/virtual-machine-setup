@@ -61,7 +61,7 @@ A core analysis environment should be setup with python. We don't currently know
 
 ```bash
 pip install uv
-uv sync --al-groups
+uv sync --all-groups
 ```
 
 This will spin up a core environment you can run. Let's verify this runs by running an UnSloth script. This is taken from an online notebook and has been shown to run on a Linux VM. Run this using `uv run example_script.py`. We'll see lots of outputs saying that we've connected to CUDA, and ultimately the training loop will kick off. We'll begin to see individual rewards as well.
