@@ -65,6 +65,8 @@ uv sync --all-groups
 uv run example_script.py
 ```
 
+You can also install uv with `curl -LsSf https://astral.sh/uv/install.sh | sh`
+
 This will spin up a core environment you can run. Let's verify this runs by running an UnSloth script. This is taken from an online notebook and has been shown to run on a Linux VM. Run this using `uv run example_script.py`. We'll see lots of outputs saying that we've connected to CUDA, and ultimately the training loop will kick off. We'll begin to see individual rewards as well.
 
 - Verify the `example_script.py` file run.
